@@ -1,0 +1,571 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Spray+Paint&display=swap');
+
+@font-face {
+  font-family: "KCC-Ganpan";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+*  {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  max-width: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Pretendard";
+  background-color: #f7f5f1;
+}
+
+.header {
+  width: 100%;
+  padding: 12px 20px;
+  border-bottom: 1px solid #dadada;
+  background-color: #f7f5f1;
+
+  display: flex;
+  /* main - sub 간 간격조절 */
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+/* 각각 main / sub를 감싸는 div */
+.header-left,
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 모든 header 버튼 */
+.header-btn {
+  background-color: #f7f5f1;
+  padding: 12px 16px;
+  border: 2px solid #1b1b1b;
+  border-radius: 999px;
+  font-size: 18px;
+  cursor: pointer;
+
+  transition: all 0.1s ease;
+}
+
+.header-btn:hover {
+  background-color: #1b1b1b;
+  color: white;
+}
+
+/* :active ) 누르는 순간만 활성화 */
+/* .header-btn:active {
+  background-color: #1b1b1b;
+  color: white;
+} */
+
+/* 활성화된 상태 */
+.active-btn {
+  background-color: #1b1b1b;
+  color: white;
+}
+
+
+/* === 0. main === */
+
+
+/* 페이지 전체를 감싸는 div */
+.main-wrap {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f7f5f1;
+  padding: 40px 80px;
+}
+
+/* 왼쪽, 오른쪽 2단 배치 (가로로 나란히) */
+.main-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+/* 왼쪽 사이드에 배치되는 div */
+.main-desc {
+  margin-top: 20px;
+  margin-left: 25px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.main-deco {
+  margin: 18px 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: #0088f6;
+  letter-spacing: 10px;
+}
+
+.main-desc p {
+  font-weight: 300;
+  font-size: 21px;
+  line-height: 1.4;
+  letter-spacing: 1.3px;
+  color: #676767;
+}
+
+
+/* 오른쪽 사이드에 배치되는 div */
+.main-visual-wrap {
+  padding-top: 20px;
+  padding-right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  animation: slide 1s ease-out forwards;
+  overflow-x: hidden;
+}
+
+@keyframes slide {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 메인 비주얼 이미지 */
+.main-visual {
+  width: 1100px;;
+  height: auto;
+  /* opacity: 80%; */
+}
+
+#main-title {
+  font-size: 90px;
+  line-height: 1.15;
+  /* color: #1b1b1b; */
+}
+
+
+/* === 2. DiseasePage === */
+
+
+/* DiseasePage.jsx ) 전체를 감싸는 div */
+.disease-page {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 230px;
+  padding: 40px 24px;
+  border-right: 1px solid #dadada;
+  flex-shrink: 0;
+}
+
+.search {
+  width: 180px;
+  height: 32px;
+  margin-top: 30px;
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #1b1b1b;
+  border-radius: 6px;
+  background: #fff;
+}
+
+/* DiseasePage.jsx ) 제목 + 카드 전체 section */
+.disease-contents {
+  /* sidebar 공간을 뺀 나머지 공간을 contents가 먹을 수 있게 */
+  flex: 1;
+  /* text-align: left; */
+  padding: 40px 32px;
+}
+
+/* DiseasePage.jsx ) 배열된 카드 div */
+.disease-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px;
+  /* 왼쪽부터 순서대로 차곡차곡 */
+  justify-content: start;
+  align-content: start;
+}
+
+/* DiseaseCard.jsx (component) ) 카드 전체 레이아웃 */
+.disease-card {
+  background: #f7f5f1;
+  /* 칸 크기만큼 넓어질 수 있게 (-list ) grid) */
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border: 2px solid #1b1b1b;
+  border-radius: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  /* 아이콘과 이름 사이 공백 */
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
+}
+
+.scrap-btn {
+  /* relative - "absolute" ) 부모 요소를 기준으로 배치 */
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  border-radius: 50%;
+  top: 5px;
+  right: 8px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.scrap-icon {
+  width: 60px;
+  aspect-ratio: 1 / 1;
+  display: block;
+}
+
+/* DiseaseCard.jsx ) 카드에 들어가는 아이콘 */
+/* 부모 class */
+.card-img {
+  width: 85%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 사진 자체에 붙어있는 class */
+.disease-thumb {
+  width: 100%;
+  height: 100%;
+  /* 사진 비율 유지 */
+  object-fit: contain;
+}
+
+.card-name {
+  margin-top: 8px;
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 21px;
+}
+
+
+/* disease 카드 모달창 */
+
+
+/* 모달창 전체 */
+.modal-overlay {
+  position: fixed;
+  /* inset: 0; ) 위치값을 모두 0으로 설정 */
+  inset: 0;
+  /* *** rgba() <- 괄호 앞에서 띄어쓰기 하면 안됨 *** */
+  /* 뒤에 배경 어두워지는 효과 */
+  background: rgba(20, 20, 20, 0.40);
+  /* 글래스 질감 표현 (블러) */
+  backdrop-filter: blur(10px);
+  /* + safari 에서의 호환성 고려 */
+  -webkit-backdrop-filter: blur(10px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 맨 위에 고정으로 떠서 보여야 함 */
+  z-index: 999;
+
+  animation: fadeIn 0.25s ease;
+}
+
+.disease-modal {
+  width: min(1180px, 90vw);
+  min-height: 620px;
+  border: 1px solid #1b1b1b;
+  border-radius: 28px;
+  overflow: hidden;
+
+  display: grid;
+  /* 각각 left, right */
+  grid-template-columns: 1.13fr 0.88fr;
+
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  animation: modalPop 0.25s ease;
+  /* 센터에서부터 올라오게 추가 */
+  transform-origin: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-left {
+  position: relative;
+  padding: 48px;
+  border-right: 1px solid #1b1b1b;
+  background-color: rgba(247, 245, 241, 0.84);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-scrap-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.modal-scrap-btn .scrap-icon {
+  width: 80px;
+  height: 80px;
+}
+
+.modal-image {
+  width: 75%;
+  max-width: 380px;
+  height: auto;
+  object-fit: contain;
+}
+
+.modal-right {
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(247, 245, 241, 0.72);
+  
+  display: flex;
+  flex-direction: column;
+}
+
+/* 배경 (장식) 을 넣기 위해 가상요소 생성 */
+.modal-right::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--bg-image);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.13;
+  pointer-events: none;
+}
+
+.modal-top {
+  position: relative;
+  /* 닫기 버튼 밑에 깔려야 함 */
+  z-index: 1;
+  min-height: 96px;
+  padding: 18px 22px;
+  border-bottom: 1px solid #1b1b1b;
+  background-color: #f7f5f1a9;
+
+  display: flex;
+  /* nameKor, nameEng, 닫기 버튼 분리 */
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* nameKor, nameEng 을 감싸는 div */
+.modal-title-wrap {
+  display: flex;
+  gap: 12px;
+  /* 글자 기준선 맞춤 */
+  align-items: baseline;
+}
+
+.modal-title-kor {
+  font-family: "KCC-Ganpan", sans-serif;
+  font-size: 36px;
+  color: #0088f6;
+}
+
+.modal-title-eng {
+  font-size: 21px;
+  color: #b0b0b0;
+}
+
+.modal-close-btn {
+  width: 52px;
+  height: 52px;
+  border: 1px solid #1b1b1b;
+  border-radius: 50%;
+  background-color: transparent;
+  font-size: 28px;
+  cursor: pointer;
+
+  transition: all 0.1s ease;
+}
+
+.modal-close-btn:hover {
+  background-color: #1b1b1b;
+  color: white;
+}
+
+.modal-bottom {
+  position: relative;
+  /* z-index: 1; */
+  padding: 22px 26px 28px 26px;
+  
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+/* modal-bottom -> 정보 나열 구조 */
+.info-row {
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(27, 27, 27, 0.264);
+
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 21px;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+/* disease.feature.map() 부분이 포함됨 */
+.info-column {
+  align-items: start;
+}
+
+.info-title {
+  font-family: "KCC-Ganpan", sans-serif;
+  font-size: 26px;
+  color: #1b1b1b;
+}
+
+.info-value {
+  font-size: 20px;
+  color: #1b1b1b;
+  line-height: 1.45;
+}
+
+/* disease.feature.map() */
+.feature-list {
+  display: flex;
+  gap: 14px;
+  flex-direction: column;
+}
+
+.feature-list p {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.55;
+  color: #1b1b1b;
+}
+
+/* === 5. ScrapPage === */
+
+
+.scrap-filter-box {
+  margin-top: 60px;
+}
+
+.scrap-filter-box p {
+  margin-bottom: 16px;
+}
+
+.scrap-filter-box label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.scrap-section {
+  padding-bottom: 43px;
+  margin-bottom: 38px;
+  border-bottom: 1px solid transparent;
+}
+
+.scrap-section:last-child {
+  border-bottom: none;
+}
+
+.empty-message {
+  margin: 5px 0 0 0;
+  font-size: 18px;
+  color: rgb(157, 157, 157);
+}
+
+
+/* footer */
+.footer {
+  width: 100%;
+  padding: 50px 0 20px 30px;
+  border-top: 1px solid #dadada;
+  background-color: #f7f5f1;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 14px;
+  color: #949494;
+  line-height: 1.35;
+}
+
+
+/* === 기본 === */
+
+
+h1 {
+  font-family: "Rubik Spray Paint", sans-serif;
+  font-size: 68px;
+  color: #0088f6;
+  margin-bottom: 63px;
+}
+
+h2 {
+  font-family: "Pretendard", sans-serif;
+  color: #0088f6;
+  /* 미묘하게 여백이 안 맞아서 기본 마진들 초기화 */
+  margin: 0 0 16px 0;
+}
+
+p {
+  margin: 0;
+  color: #1b1b1b;
+  font-size: 21px;
+}
