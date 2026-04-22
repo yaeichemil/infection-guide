@@ -285,9 +285,9 @@ body {
   /* 뒤에 배경 어두워지는 효과 */
   background: rgba(20, 20, 20, 0.40);
   /* 글래스 질감 표현 (블러) */
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(14px);
   /* + safari 에서의 호환성 고려 */
-  -webkit-backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(14px);
 
   display: flex;
   justify-content: center;
@@ -310,8 +310,8 @@ body {
   grid-template-columns: 1.13fr 0.88fr;
 
   background: rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  /* backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px); */
 
   animation: modalPop 0.25s ease;
   /* 센터에서부터 올라오게 추가 */
