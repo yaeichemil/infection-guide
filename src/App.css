@@ -283,11 +283,11 @@ body {
   inset: 0;
   /* *** rgba() <- 괄호 앞에서 띄어쓰기 하면 안됨 *** */
   /* 뒤에 배경 어두워지는 효과 */
-  background: rgba(20, 20, 20, 0.40);
+  background: rgba(20, 20, 20, 0.48);
   /* 글래스 질감 표현 (블러) */
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(20px);
   /* + safari 에서의 호환성 고려 */
-  -webkit-backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(20px);
 
   display: flex;
   justify-content: center;
